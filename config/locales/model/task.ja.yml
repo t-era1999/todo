@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      title: タイトル
+      content: 詳細
+      category: カテゴリ
+  enums:
+    task:
+      impotance:
+        low: 低
+        middle: 中
+        high: 高

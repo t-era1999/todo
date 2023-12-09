@@ -1,0 +1,29 @@
+<%= form_with model: @task do |form| %>
+  <div>
+    <%= form.label :title, "件名" %>
+    <%= form.text_area :title, rows: 1 %>
+  </div>
+
+  <div>
+    <%= form.label :content, "詳細" %>
+    <%= form.text_area :content, rows: 3 %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, "カテゴリ" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: "選択してください" %>
+  </div>
+
+  <div>
+    <%= form.label :deadline_on, "期限" %>
+    <%= form.date_select :deadline_on %>
+  </div>
+
+  <div>
+    <%= form.label :importance, "重要度" %>
+    <%= form.collection_select :importance, Task.importances_i18n %>
+  </div>
+
+  <%= form.submit "更新" %>
+  <%= form.submit "削除" %>
+<% end %>

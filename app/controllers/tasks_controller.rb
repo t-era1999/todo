@@ -2,6 +2,7 @@ class TasksController < AuthController
 
   def index
     @tasks = current_user.tasks
+    @tasks = @tasks.order(':field :sort', field: params[:field], sort: params[:sort] || 'asc') if params[:field].present?
   end
 
   def show
@@ -31,5 +32,3 @@ class TasksController < AuthController
   end
 
 end
-
-  

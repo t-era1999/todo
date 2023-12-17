@@ -1,11 +1,13 @@
-<%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %>
+<%= link_to '新規作成', new_task_path, class: 'btn btn-primary' %>
+
+<%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-primary' %>
 
 <h1>ToDo一覧</h1>
 
 <table class="table">
  <thead class="table-primary">
   <tr>
-   <th>件名</th>
+   <th><%= link_to '件名', tasks_path(field: 'title') %></th>
    <th>カテゴリ</th>
    <th>期限</th>
    <th>重要度</th>
@@ -15,14 +17,13 @@
  <tbody>
   <% @tasks.each do |task| %>
    <tr>
-    <td><%= task.title %></td>
+    <td><%= link_to task.title, edit_task_path(task) %></td>
     <td><%= task.category&.name %></td>
-    <td><%= task.deadline_on %></td>
-    <td><%= task.importance %></td>
+    <td><%= l task.deadline_on %></td>
+    <td><%= task.importance_i18n %></td>
    </tr>
   <% end %>
  </tbody>
 </table>
 
-<%= link_to '新規作成', new_task_path, class: 'btn btn-primary' %>
 

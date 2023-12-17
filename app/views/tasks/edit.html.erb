@@ -21,7 +21,7 @@
 
   <div>
     <%= form.label :importance, "重要度" %>
-    <%= form.collection_select :importance, Task.importances_i18n %>
+    <%= form.collection_select :importance, Task.importances_i18n, :first, :last %>
   </div>
 
   <%= form.submit "更新" %>

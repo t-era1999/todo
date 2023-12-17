@@ -6,7 +6,7 @@ ja:
       category: カテゴリ
   enums:
     task:
-      impotance:
+      importance:
         low: 低
         middle: 中
         high: 高

@@ -1,5 +1,5 @@
 <%= link_to '新規作成', new_task_path, class: 'btn btn-primary' %>
-
+<%= link_to 'カテゴリ', new_category_path, class: 'btn btn-primary' %>
 <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-primary' %>
 
 <h1>ToDo一覧</h1>
@@ -7,10 +7,10 @@
 <table class="table">
  <thead class="table-primary">
   <tr>
-   <th><%= link_to '件名', tasks_path(field: 'title') %></th>
-   <th>カテゴリ</th>
-   <th>期限</th>
-   <th>重要度</th>
+   <th><%= sort_link(@q, :title, "件名") %></th>
+   <th><%= sort_link(@q, :category_id, "カテゴリ") %></th>
+   <th><%= sort_link(@q, :deadline_on, "期限") %></th>
+   <th><%= sort_link(@q, :importance, "重要度") %></th>
   </tr>
  </thead>
 

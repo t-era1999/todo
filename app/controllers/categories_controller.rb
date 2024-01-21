@@ -18,5 +18,4 @@ class CategoriesController < AuthController
   def category_params
     params.require(:category).permit(:category)
   end
-  
 end

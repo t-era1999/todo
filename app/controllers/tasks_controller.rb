@@ -1,8 +1,7 @@
 class TasksController < AuthController
 
   def index
-    @tasks = current_user.tasks
-    @q = Task.ransack(params[:q])
+    @q = current_user.tasks.ransack(params[:q])
     @tasks = @q.result
   end
 
@@ -24,6 +23,21 @@ class TasksController < AuthController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def update
+    @task = current_user.tasks.find(params[:id])
+    if @task.update(task_params)
+      redirect_to tasks_path, notice: "更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @task = current_user.tasks.find(params[:id])
+    @task.destroy
+    redirect_to tasks_path, notice: "削除しました"
   end
 
   private
